@@ -115,7 +115,7 @@ body {
       if(x < $(this).width() && x > 0){
           if(y < $(this).height() && y > 0){
                   //CODE GOES HERE
-                  console.log(touch.pageY+' '+touch.pageX);
+           $("#stats").html(       touch.pageY+' '+touch.pageX);
           
       			var deltaMove = {
 				x : touch.pageX - PrevMouseXY.x,
@@ -138,8 +138,8 @@ body {
 x: touch.pageX, y:   	touch.pageY		};
 					
 
-	  }}
-		function addMouseEvent() {
+	  }}}		
+function addMouseEvent() {
 			$(renderer.domElement).on('mousedown', draggingStart).on(
 					'mousemove', dragging);
 		}
