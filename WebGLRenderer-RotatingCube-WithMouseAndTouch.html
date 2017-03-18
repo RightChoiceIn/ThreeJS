@@ -79,6 +79,7 @@ body {
 
 		function draggingStart() {
 			isDragging = true;
+			cancelAnimationFrame(animID);
 		}
 		function dragging(e) {
 			var deltaMove = {
@@ -87,7 +88,6 @@ body {
 			};
 
 			if (isDragging) {
-				cancelAnimationFrame(animID);
 				var deltaRotationQuaternion = new THREE.Quaternion()
 						.setFromEuler(new THREE.Euler(
 								toRadians(deltaMove.y * 1),
@@ -96,12 +96,14 @@ body {
 				cube.quaternion.multiplyQuaternions(deltaRotationQuaternion,
 						cube.quaternion);
 				renderer.render(scene, camera);
+				$("#stats").html("Dragging: " +  deltaMove.x +" " + deltaMove.y);
 			}
 
 			PrevMouseXY = {
 				x : e.offsetX,
 				y : e.offsetY
 			};
+			
 		}
 
 		function addMouseEvent() {
@@ -182,5 +184,6 @@ body {
 			return angle * (180 / Math.PI);
 		}
 	</script>
+	<label id="stats"></label>
 </body>
 </html>
