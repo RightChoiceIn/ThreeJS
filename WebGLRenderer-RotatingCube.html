@@ -3,11 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Web GL Renderer Skeleton</title>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/three.js/84/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/84/three.min.js"></script>
 
 <style>
 body {
@@ -23,18 +19,6 @@ body {
 
 		var geometry, material, cube;
 
-		var isDragging = false;
-		var animID;
-		var PrevMouseXY = {
-			x : 0,
-			y : 0
-		};
-
-		$(document).on('mouseup', function(e) {
-			console.log(isDragging);
-			isDragging = false;
-			requestAnimationFrame(animate);
-		})
 		window.onload = init2;
 
 		function init() {
@@ -67,47 +51,10 @@ body {
 				scene.add(cube);
 
 				document.body.appendChild(renderer.domElement);
-
 				renderer.render(scene, camera);
 			} catch (e) {
 				alert(e);
 			}
-		}
-
-		function addMouseEvent() {
-			$(renderer.domElement)
-					.on('mousedown', function(e) {
-						console.log(isDragging);
-						isDragging = true;
-					})
-					.on(
-							'mousemove',
-							function(e) {
-								var deltaMove = {
-									x : e.offsetX - PrevMouseXY.x,
-									y : e.offsetY - PrevMouseXY.y
-								};
-
-								if (isDragging) {
-									console.log('moving');
-									cancelAnimationFrame(animID);
-									 var deltaRotationQuaternion = new THREE.Quaternion()
-											.setFromEuler(new THREE.Euler(
-													toRadians(deltaMove.y * 1),
-													toRadians(deltaMove.x * 1),
-													0, 'XYZ'));
-
-									cube.quaternion.multiplyQuaternions(
-											deltaRotationQuaternion,
-											cube.quaternion); 
-									renderer.render(scene, camera);
-								}
-
-								PrevMouseXY = {
-									x : e.offsetX,
-									y : e.offsetY
-								};
-							});
 		}
 
 		function init2() {
@@ -141,7 +88,7 @@ body {
 
 					vertexColors : THREE.VertexColors
 				});
-				var colors = [ 0x4abdac, 0xf78733, 0xfc4a1a ];
+				var colors = [ 0x4abdac, 0xf78733,0xfc4a1a ];
 				for (var i = 0; i < 3; i++) {
 					cubeGeo.faces[4 * i].color.setHex(colors[i]);
 					cubeGeo.faces[4 * i + 1].color.setHex(colors[i]);
@@ -151,7 +98,6 @@ body {
 				cube = new THREE.Mesh(cubeGeo, material);
 
 				scene.add(cube);
-				addMouseEvent();
 				animate();
 
 			} catch (e) {
@@ -160,25 +106,11 @@ body {
 		}
 
 		function animate() {
-			animID = requestAnimationFrame(animate);
-			cube.rotation.x = Date.now() * 0.0006;
+			requestAnimationFrame(animate);
+			cube.rotation.x = Date.now()*0.0006;
 			cube.rotation.y = Date.now() * 0.0008;
-			PrevMouseXY = {
-				x : cube.rotation.x,
-				y : cube.rotation.y
-			};
-
 			renderer.render(scene, camera);
 		}
-		function toRadians(angle) {
-			return angle * (Math.PI / 180);
-		}
-
-		function toDegrees(angle) {
-			return angle * (180 / Math.PI);
-		}
-
-
 	</script>
 </body>
 </html>
