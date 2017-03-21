@@ -9,16 +9,34 @@
 <meta http-equiv="pragma" content="no-cache" />
 <title>WebVR-Demo</title>
 <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
-
+<style>
+img {
+	opacity: 0.5;
+}
+</style>
 </head>
 <body>
 
-	<a-scene> s<a-image position="0 0.5 -10"  
-		src="https://rawgit.com/RightChoiceIn/ThreeJS/master/WebVR/logo2.jpeg"></a-image>
+	<!-- <a-scene> <a-image height=15 width=10 opacity=0.5 position="0 0.5 -10"  
+		src="https://pixabay.com/get/eb34b0082bf5013ed1534705fb0938c9bd22ffd41db8114095f8c47ea2/panorama-2117310_1920.jpg"></a-image>
 	<a-entity camera position="0 0 0"> <a-animation
-		attribute="rotation" dur="10000" fill="forwards"
+		attribute="rotation" dur="20000" fill="forwards"
                to="0 360 0"
                repeat="indefinite"></a-animation>
-	</a-entity> </a-scene>
+	</a-entity> </a-scene> -->
+	<a-scene>
+	 <a-camera>
+    <a-cursor></a-cursor>
+  </a-camera>
+	 <a-assets> <img id="sky"
+		src="https://rawgit.com/RightChoiceIn/ThreeJS/master/images/sky.jpg">
+	 
+	</a-assets> 
+	<a-image height=2 width=2  metalness=1 position="-4 0.6 -4" rotation="0 45 0" src="https://pixabay.com/get/eb34b0082bf5013ed1534705fb0938c9bd22ffd41db8114095f8c47ea2/panorama-2117310_1920.jpg"></a-image>
+	<a-sky src="#sky"></a-sky> 
+	
+	<!-- <a-entity camera position="0 0 0">
+	<a-animation attribute="rotation" dur="20000" fill="forwards"
+		to="0 180 0" repeat="indefinite"></a-animation> </a-entity> --> </a-scene>
 </body>
 </html>
