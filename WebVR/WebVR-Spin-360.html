@@ -67,14 +67,13 @@ img {
                    easing="ease-out" dur="2000" fill="backwards"></a-animation>
 		</a-image>
 		<!-- Center -->
-	<a-image height=4 width=4 metalness=1 position="0 1.75 -4"
-		rotation="0 0 0"
+	<a-image height=4 width=4 metalness=1 position="0 1.75 -4" cursor-listener
+		rotation="0 0 0" data-target="WebVR-Show3.html"
 		src="../images/3.jpg">
 		
 		<a-animation begin="fusing" attribute="position" from="0 1.75 -4" to="0 1.75 -3.5"
                    easing="ease-out" dur="2000" fill="backwards"></a-animation>
 		</a-image>
-
 	<a-sky src="#sky"></a-sky> <!--  <a-entity camera position="0 0 0">
 	<a-animation attribute="rotation" dur="20000" fill="forwards"
 		to="0 180 0" repeat="indefinite"></a-animation> </a-entity> --></a-scene>
@@ -95,6 +94,7 @@ AFRAME.registerComponent('cursor-listener', {
 	      var randomIndex = Math.floor(Math.random() * COLORS.length);
 	      this.setAttribute('material', 'color', COLORS[randomIndex]);
 	      console.log('I was clicked at: ', evt.detail.intersection.point);
+	      window.open(evt.srcElement.getAttribute('data-target'),'_self');
 	    });
 	  }
 	});
