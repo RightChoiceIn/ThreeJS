@@ -24,9 +24,13 @@ img {
                to="0 360 0"
                repeat="indefinite"></a-animation>
 	</a-entity> </a-scene> -->
-	<a-scene> <a-camera position="0 0 0"> 
+	<a-scene> <a-camera position="0 0 0" look-controls> 
 	
-	<a-cursor></a-cursor>
+	<a-entity cursor="fuse: true; fuseTimeout: 500"
+            position="0 0 -1"
+            geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+            material="color: darkblue; shader: flat">
+  </a-entity>
 	
 	</a-camera> 
 	
@@ -74,14 +78,27 @@ img {
 	<a-sky src="#sky"></a-sky> <!--  <a-entity camera position="0 0 0">
 	<a-animation attribute="rotation" dur="20000" fill="forwards"
 		to="0 180 0" repeat="indefinite"></a-animation> </a-entity> --></a-scene>
-<a-entity cursor="fuse: true; fuseTimeout: 500"
+<!-- <a-entity cursor="fuse: true; fuseTimeout: 500"
           position="0 0 -1"
           geometry="primitive: ring"
           material="color: black; shader: flat">
   <a-animation begin="click" easing="ease-in" attribute="scale"
                fill="backwards" from="0.1 0.1 0.1" to="1 1 1"></a-animation>
   <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale"
-               fill="forwards" from="1 1 1" to="0.1 0.1 0.1"></a-animation>
+               fill="forwards" from="1 1 1" to="0.1 0.1 0.1"></a-animation> -->
 </a-entity>
+<script>
+AFRAME.registerComponent('cursor-listener', {
+	  init: function () {
+	    var COLORS = ['red', 'green', 'blue'];
+	    this.el.addEventListener('click', function (evt) {
+	      var randomIndex = Math.floor(Math.random() * COLORS.length);
+	      this.setAttribute('material', 'color', COLORS[randomIndex]);
+	      console.log('I was clicked at: ', evt.detail.intersection.point);
+	    });
+	  }
+	});
+</script>
 </body>
+
 </html>
