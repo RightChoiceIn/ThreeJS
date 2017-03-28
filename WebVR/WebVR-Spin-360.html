@@ -24,33 +24,64 @@ img {
                to="0 360 0"
                repeat="indefinite"></a-animation>
 	</a-entity> </a-scene> -->
-	<a-scene> <a-camera position="0 0 0"> <a-cursor></a-cursor>
-	</a-camera> <a-assets> <img id="sky"
+	<a-scene> <a-camera position="0 0 0"> 
+	
+	<a-cursor></a-cursor>
+	
+	</a-camera> 
+	
+	<a-assets> <img id="sky"
 		src="https://rawgit.com/RightChoiceIn/ThreeJS/master/images/sky.jpg">
 	</a-assets> 
 	<!-- 0 0 -->
 	<a-image height=2 width=2 metalness=1 position="-4 0.6 -4"
 		rotation="0 45 0"
-		src="../images/1.jpg"></a-image>
-	<!-- 1 0 -->
+		src="../images/1.jpg">
+		<a-animation begin="fusing" attribute="position" from="-4 0.6 -4" to="-3 0.6 -3"
+                   easing="ease-out" dur="2000" fill="backwards"></a-animation>
+		</a-image>
+	<!-- 0 0 -->
 	<a-image height=2 width=2 metalness=1 position="-4 2.9 -4"
 		rotation="0 45 0"
-		src="https://rawgit.com/RightChoiceIn/ThreeJS/master/images/sky.jpg"></a-image>
+		src="https://rawgit.com/RightChoiceIn/ThreeJS/master/images/sky.jpg">
+		<a-animation begin="fusing" attribute="position" from="-4 2.9 -4" to="-3 3.2 -3"
+                   easing="ease-out" dur="2000" fill="backwards"></a-animation>
+		</a-image>
 	<!-- 1 1 -->
 	<a-image height=2 width=2 metalness=1 position="4 0.6 -4"
 		rotation="0 -45 0"
-		src="../images/4.jpg"></a-image>
+		src="../images/4.jpg">
+		<a-animation begin="fusing" attribute="position" from="4 0.6 -4" to="4 0.6 -3.5"
+                   easing="ease-out" dur="2000" fill="backwards"></a-animation>
+		</a-image>
 		<!-- 0 1 -->
 	<a-image height=2 width=2 metalness=1 position="4 2.9 -4"
 		rotation="0 -45 0"
-		src="../images/2.jpg"></a-image>
+		src="../images/2.jpg">
+		
+		<a-animation begin="fusing" attribute="position" from="4 2.9 -4" to="4 2.9 -3.5"
+                   easing="ease-out" dur="2000" fill="backwards"></a-animation>
+		</a-image>
 		<!-- Center -->
 	<a-image height=4 width=4 metalness=1 position="0 1.75 -4"
 		rotation="0 0 0"
-		src="../images/3.jpg"></a-image>
+		src="../images/3.jpg">
+		
+		<a-animation begin="fusing" attribute="position" from="0 1.75 -4" to="0 1.75 -3.5"
+                   easing="ease-out" dur="2000" fill="backwards"></a-animation>
+		</a-image>
 
 	<a-sky src="#sky"></a-sky> <!--  <a-entity camera position="0 0 0">
 	<a-animation attribute="rotation" dur="20000" fill="forwards"
 		to="0 180 0" repeat="indefinite"></a-animation> </a-entity> --></a-scene>
+<a-entity cursor="fuse: true; fuseTimeout: 500"
+          position="0 0 -1"
+          geometry="primitive: ring"
+          material="color: black; shader: flat">
+  <a-animation begin="click" easing="ease-in" attribute="scale"
+               fill="backwards" from="0.1 0.1 0.1" to="1 1 1"></a-animation>
+  <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale"
+               fill="forwards" from="1 1 1" to="0.1 0.1 0.1"></a-animation>
+</a-entity>
 </body>
 </html>
