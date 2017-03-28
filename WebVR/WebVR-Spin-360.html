@@ -27,21 +27,27 @@ img {
 	<a-scene> <a-camera position="0 0 0"> <a-cursor></a-cursor>
 	</a-camera> <a-assets> <img id="sky"
 		src="https://rawgit.com/RightChoiceIn/ThreeJS/master/images/sky.jpg">
-	</a-assets> <a-image height=2 width=2 metalness=1 position="-4 0.6 -4"
+	</a-assets> 
+	<!-- 0 0 -->
+	<a-image height=2 width=2 metalness=1 position="-4 0.6 -4"
 		rotation="0 45 0"
-		src="https://pixabay.com/get/eb34b0082bf5013ed1534705fb0938c9bd22ffd41db8114095f8c47ea2/panorama-2117310_1920.jpg"></a-image>
+		src="../images/1.jpg"></a-image>
+	<!-- 1 0 -->
 	<a-image height=2 width=2 metalness=1 position="-4 2.9 -4"
 		rotation="0 45 0"
 		src="https://rawgit.com/RightChoiceIn/ThreeJS/master/images/sky.jpg"></a-image>
+	<!-- 1 1 -->
 	<a-image height=2 width=2 metalness=1 position="4 0.6 -4"
 		rotation="0 -45 0"
-		src="https://pixabay.com/get/e03db50f20fc1c22d9584518a3484e9ee072e2d404b0154895f1c071a1edb3/coastline-984088_1920.jpg"></a-image>
+		src="../images/2.jpg"></a-image>
+		<!-- 0 1 -->
 	<a-image height=2 width=2 metalness=1 position="4 2.9 -4"
 		rotation="0 -45 0"
-		src="https://pixabay.com/get/e83db7072ff7063ed1534705fb09429eeb74e7d518ac10459cf0c078afeab4bf/beach-1868737_1920.jpg"></a-image>
+		src="../images/3.jpg"></a-image>
+		<!-- Center -->
 	<a-image height=4 width=4 metalness=1 position="0 1.75 -4"
 		rotation="0 0 0"
-		src="https://pixabay.com/get/e837b90e2ff1053ed1584d05fb09429eeb74e7d518ac10459cf0c078afeab0bd/city-1281754_1280.jpg"></a-image>
+		src="../images/4.jpg"></a-image>
 
 	<a-sky src="#sky"></a-sky> <!--  <a-entity camera position="0 0 0">
 	<a-animation attribute="rotation" dur="20000" fill="forwards"
