@@ -20,11 +20,12 @@ img {
 
 	<!-- <a-scene> <a-image height=15 width=10 opacity=0.5 position="0 0.5 -10"  
 		src="https://pixabay.com/get/eb34b0082bf5013ed1534705fb0938c9bd22ffd41db8114095f8c47ea2/panorama-2117310_1920.jpg"></a-image>
-	<a-entity camera position="0 0 0"> <a-animation
+	<a-entity camera position="0 0 0"> 
+	</a-entity> </a-scene> -->
+	<a-animation id="autoplay"
 		attribute="rotation" dur="20000" fill="forwards"
                to="0 360 0"
                repeat="indefinite"></a-animation>
-	</a-entity> </a-scene> -->
 	<a-scene> <a-camera position="0 0 0" look-controls> 
 	
 	<a-entity cursor="fuse: true; fuseTimeout: 2500"
@@ -41,7 +42,7 @@ img {
 		src="">
 	</a-assets> 
 	<a-sky src="#sky"></a-sky>
-	
+	<a-entity position="0 1.75 -4"  text="value: Go Back;"></a-entity>
 	<!-- 0 0 -->
 	<a-image height=2 width=2 metalness=1 position="-4 0.6 -4" cursor-listener
 		rotation="0 45 0" data-target="../images/1.jpg"
@@ -104,6 +105,7 @@ AFRAME.registerComponent('cursor-listener', {
 	   		//$('#sky2').attr('src','https://rawgit.com/RightChoiceIn/ThreeJS/master/images/3.jpg')
 	   		$('#sky2').attr('src',evt.srcElement.getAttribute('data-target'));
 	   		$('a-sky').attr('src','#sky2');
+	   		$('a-camera').append($('#autoplay')[0]);
 	    });
 	  }
 	});
